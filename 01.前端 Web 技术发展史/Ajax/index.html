@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <pre id="info"></pre>
+    <input id="target" type="text" />
+    <button onclick="search()">查询</button>
+
+    <script>
+      const info = document.getElementById("info");
+      const target = document.getElementById("target");
+
+      var search = function () {
+        // const request = new XMLHttpRequest();
+
+        // request.responseType = "json";
+        // request.onload = () => {
+        //   info.innerHTML = JSON.stringify(request.response, null, 2);
+        // };
+
+        // request.open(
+        //   "GET",
+        //   "http://localhost:9000/api/products/" + target.value,
+        //   true
+        // );
+
+        // request.send(null);
+
+        fetch("http://localhost:9000/api/products/" + target.value).then(
+          (response) =>
+            response.json().then((result) => {
+              info.innerHTML = JSON.stringify(result, null, 2);
+            })
+        );
+      };
+    </script>
+  </body>
+</html>
