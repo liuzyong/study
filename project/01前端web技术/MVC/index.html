@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <input id="source" type="text" />
+    <div id="text"></div>
+
+    <script>
+      const text = document.getElementById("text");
+      const source = document.getElementById("source");
+
+      source.oninput = () => {
+        controller.modify(source.value);
+      };
+
+      // 定义 model 并监听数据变化
+      const model = {};
+      var content = "";
+
+      Object.defineProperty(model, "content", {
+        set: (v) => {
+          content = v;
+          view.update(content);
+        },
+        get: () => {
+          return content;
+        },
+      });
+
+      // 定义 view 以及视图更新方法
+      const view = {
+        update: (newContent) => {
+          text.innerHTML = newContent;
+        },
+      };
+
+      // 定义 controller 以及数据更新方法
+      const controller = {
+        modify: (newContent) => {
+          model.content = newContent;
+        },
+      };
+    </script>
+  </body>
+</html>

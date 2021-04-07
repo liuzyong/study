@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <div id="content">Hello World!</div>
+    <button onclick="jump()">点一下试试</button>
+
+    <script>
+      var jump = () => {
+        const content = document.getElementById("content");
+
+        content.innerHTML = "一个实际不存在的页面";
+        history.pushState({}, "其他页面", "other.html");
+      };
+    </script>
+  </body>
+</html>
