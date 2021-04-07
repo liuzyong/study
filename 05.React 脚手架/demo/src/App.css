@@ -1,23 +1,13 @@
-.App {
-  padding: 5px;
-  display: flex;
-  gap: 5px;
-}
-
 .card {
-  box-shadow: 0px 0px 8px 1px grey;
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  box-shadow: 0px 0px 5px 2px grey;
+  width: 200px;
+  height: 200px;
+  padding: 5px;
 }
 
+/* 直接子代选择器 */
 .card > .title {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 800;
-  padding: 5px;
   border-bottom: 1px solid black;
-}
-
-.card > .content {
-  padding: 5px;
 }
