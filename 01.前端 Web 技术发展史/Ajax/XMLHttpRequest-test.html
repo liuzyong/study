@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello </title>
+</head>
+<script>
+    function send(params) {
+        alert("这里是发送请求程序的开始")
+        var xmlHttp = new XMLHttpRequest;
+        //这个接口需要根据自己的需求换成相应的接口
+        xmlHttp.open('POST', 'http://localhost:52100/testCase');
+
+        xmlHttp.setRequestHeader('content-type', 'application/json');
+        // xmlHttp.setRequestHeader('token', '701558c38f34c3e08e0ab305c84ecy0b');
+        let obj = [
+           //这个是你要查询的条件，如果是多组条件，需要以多个 key value数组形式
+            {
+                "key": "fwlx"
+            },
+            {
+                "value": "智能制造"
+            }
+        ]
+        var stringData = JSON.stringify(obj);
+        alert("我是要发送的body"+stringData)
+        xmlHttp.send(stringData);
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                //这个是你要的响应数据
+                alert(xmlHttp.responseText)
+            } else {
+                //请求失败的回调函数 console.log('保存失败');
+            }
+        }
+
+    }
+</script>
+
+<body>
+    <button onclick="send()">点我发送一个POST请求</button>
+
+</body>
+
+</html>
